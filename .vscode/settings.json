@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "memory.h": "c",
+        "inttypes.h": "c",
+        "half_float.h": "c"
+    }
+}
