@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <memory>
 
 #include <vector>
 
@@ -70,7 +71,7 @@ void readFileLineByLine(const std::string &filename, int numLinesToRead, std::st
     if (lastSeekPoint != nullptr)
     {
         file.seekg(*lastSeekPoint);
-        printf("Seeking to: %d\n", *lastSeekPoint);
+        std::cout << "Seeking to: " << *lastSeekPoint << std::endl;
         if (file.fail())
         {
             std::cerr << "Seeking failed, resetting to start of file" << std::endl;
@@ -101,7 +102,7 @@ void readFileLineByLine(const std::string &filename, int numLinesToRead, std::st
         if (lastSeekPoint != nullptr)
         {
             *lastSeekPoint = file.tellg();
-            printf("Saving seek point: %d\n", *lastSeekPoint);
+            std::cout << "Saving seek point: " << *lastSeekPoint << std::endl;
         }
     }
 
