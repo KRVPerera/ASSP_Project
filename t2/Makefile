@@ -1,4 +1,4 @@
-all: simc
+all: cycles
 
 dis: fir.tpef processor.adf
 	tcedisasm -s -n processor.adf fir.tpef
@@ -12,8 +12,11 @@ fir.tpef: fir.c processor.adf
 simu: fir.tpef processor.adf
 	proxim processor.adf fir.tpef
 
-simc: fir.tpef processor.adf
+cycles: fir.tpef processor.adf
 	ttasim -a processor.adf -p fir.tpef -e"run; puts [info proc cycles]; quit"
+
+stats: fir.tpef processor.adf
+	./run_script.sh stats
 
 asm: fir.tpef program.adf
 	tcedisasm -n -o program.tceasm processor.adf fir.tpef
@@ -30,6 +33,9 @@ out34: output.out
 outn: output.out
 	typeout output.out
 
+run: fir.tpef processor.adf
+	ttasim -a processor.adf -p fir.tpef -e "$(TCL_SCRIPT)"
+
 clean:
 	rm -f *.tpef
 	rm -f *.tceasm
@@ -37,4 +43,4 @@ clean:
 	rm -f *.tpef.*
 	rm -f output.out
 
-.PHONY: clean dis simc simu diff diffv outn out34
+.PHONY: clean dis cycles stats diff diffv outn out34 run stats run
