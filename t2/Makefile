@@ -24,9 +24,6 @@ diff:
 diffv:
 	vimdiff output.out reference.out
 
-filter:
-	g++ -std=c++11 filter.cpp -o filter
-
 out34: output.out
 	typeout output.out 34 2
 
@@ -39,6 +36,5 @@ clean:
 	rm -f *.dot
 	rm -f *.tpef.*
 	rm -f output.out
-	rm -f filter
 
-.PHONY: clean dis simc simu diff vimdiff outn out34
+.PHONY: clean dis simc simu diff diffv outn out34
