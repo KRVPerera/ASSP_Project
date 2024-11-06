@@ -2391,7 +2391,7 @@
 
   <register-file name="RF_0">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -2419,7 +2419,7 @@
 
   <register-file name="RF_1">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -2433,7 +2433,7 @@
 
   <register-file name="RF_2">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -2447,7 +2447,7 @@
 
   <register-file name="RF_2_1">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
