@@ -18,13 +18,13 @@ inline int8_t fir_filter(int8_t x0, int8_t x1, int8_t x2, int8_t x3) {
 void __attribute__((noinline)) fir_filter_loop(int8_t *restrict x) {
     int status, done = 0;
     uint8_t data;
-
     _TCE_FIFO_U8_STREAM_IN(0, data, status);
     do {
         x[3] = x[2];
         x[2] = x[1];
         x[1] = x[0];
-        x[0] = (int8_t)data - 128; 
+        x[0] = data - 128; 
+
 
         int8_t result = fir_filter(x[0], x[1], x[2], x[3]);
         _TCE_FIFO_U8_STREAM_OUT(result + 128);  

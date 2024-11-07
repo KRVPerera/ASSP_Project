@@ -15,26 +15,23 @@ simu: fir.tpef processor.adf
 cycles: fir.tpef processor.adf
 	ttasim -a processor.adf -p fir.tpef -e"run; puts [info proc cycles]; quit"
 
+OUTPUT.out: fir.tpef processor.adf
+	ttasim -a processor.adf -p fir.tpef -e"run; puts [info proc cycles]; quit"
+
 stats: fir.tpef processor.adf
 	./run_script.sh stats
 
 asm: fir.tpef program.adf
 	tcedisasm -n -o program.tceasm processor.adf fir.tpef
 
-diff:
-	diff output.out reference.out
+diff: OUTPUT.out
+	diff -w OUTPUT.out reference.out
 
-diffv:
-	vimdiff output.out reference.out
-
-out34: output.out
+out34: OUTPUT.out
 	typeout output.out 34 2
 
-outn: output.out
+outn: OUTPUT.out
 	typeout output.out
-
-run: fir.tpef processor.adf
-	ttasim -a processor.adf -p fir.tpef -e "$(TCL_SCRIPT)"
 
 clean:
 	rm -f *.tpef
@@ -43,4 +40,4 @@ clean:
 	rm -f *.tpef.*
 	rm -f output.out
 
-.PHONY: clean dis cycles stats diff diffv outn out34 run stats run
+.PHONY: clean dis cycles stats diff outn out34 run stats
