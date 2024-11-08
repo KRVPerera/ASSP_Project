@@ -10,7 +10,7 @@ fir.tpef: fir_mac.c proc_dilan.adf
 	tcecc -v -O3 -o fir.tpef -a proc_dilan.adf fir_mac.c --unroll-threshold=10000 --inline-threshold=10000
 
 simu: fir.tpef proc_dilan.adf
-	proxim processor.adf fir.tpef
+	proxim proc_dilan.adf fir.tpef
 
 cycles: fir.tpef proc_dilan.adf
 	ttasim -a proc_dilan.adf -p fir.tpef -e"run; puts [info proc cycles]; quit"
