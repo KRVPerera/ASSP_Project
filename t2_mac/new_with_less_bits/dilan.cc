@@ -18,8 +18,8 @@ OPERATION(DILANMAC)
 TRIGGER
 
     int16_t result;
-	int8_t in1 = INT(1);
-	int8_t in2 = INT(2);
+	int16_t in1 = INT(1);
+	int16_t in2 = INT(2);
     int16_t in3 = INT(3);
 
 	result = (in1 * in2) + in3;

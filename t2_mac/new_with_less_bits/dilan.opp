@@ -6,8 +6,8 @@
     <description/>
     <inputs>3</inputs>
     <outputs>1</outputs>
-    <in element-count="1" element-width="8" id="1" type="SIntWord"/>
-    <in element-count="1" element-width="8" id="2" type="SIntWord"/>
+    <in element-count="1" element-width="16" id="1" type="SIntWord"/>
+    <in element-count="1" element-width="16" id="2" type="SIntWord"/>
     <in element-count="1" element-width="16" id="3" type="SIntWord"/>
     <out element-count="1" element-width="16" id="4" type="SIntWord"/>
   </operation>

@@ -7,13 +7,13 @@
 #define K2 109
 #define K3 37
 
-void __attribute__((noinline)) fir_filter_loop(int *restrict x) {
+void __attribute__((noinline)) fir_filter_loop(int16_t *restrict x) {
     int status, done = 0;
-    int8_t data, data2;
+    uint8_t data, data2;
 
     do {
-        _TCE_FIFO_S16_STREAM_IN(0, data, status);
-        _TCE_FIFO_S16_STREAM_IN(0, data2, status);
+        _TCE_FIFO_U8_STREAM_IN(0, data, status);
+        _TCE_FIFO_U8_STREAM_IN(0, data2, status);
         done = (status == 0);
         int16_t result;
         int16_t result2;
@@ -40,22 +40,23 @@ void __attribute__((noinline)) fir_filter_loop(int *restrict x) {
         _TCE_DILANMAC(K3, x[3], res3, result2);
         result2 = result2 >> SCALE;
 
-        _TCE_FIFO_S16_STREAM_OUT(result + 128);  
-        _TCE_FIFO_S16_STREAM_OUT(result2 + 128);  
+        _TCE_FIFO_U8_STREAM_OUT(result + 128);  
+        _TCE_FIFO_U8_STREAM_OUT(result2 + 128);  
     } while (!done);
 }
 
 void sample_copy(int count) {
-    int i, temp, status;
+    int i, status;
+    uint8_t temp;
     for (i = 0; i < count; i++) {
-        _TCE_FIFO_S16_STREAM_IN(0, temp, status);
-        _TCE_FIFO_S16_STREAM_OUT(temp);
+        _TCE_FIFO_U8_STREAM_IN(0, temp, status);
+        _TCE_FIFO_U8_STREAM_OUT(temp);
     }
 }
 
 int main(int argc, char *argv[]) {
     sample_copy(44);
-    int8_t x[4] = {0, 0, 0, 0};
+    int16_t x[4] = {0, 0, 0, 0};
     fir_filter_loop(x);
     return 0;
 }
