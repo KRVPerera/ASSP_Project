@@ -1,28 +1,28 @@
 all: cycles
 
-dis: fir.tpef processor.adf
-	tcedisasm -s -n processor.adf fir.tpef
+dis: farrow.tpef processor.adf
+	tcedisasm -s -n processor.adf farrow.tpef
 
 design:
 	prode processor.adf
 
-fir.tpef: fir.c processor.adf
-	tcecc -v -O3 -o fir.tpef -a processor.adf fir.c --unroll-threshold=10000 --inline-threshold=10000
+farrow.tpef: farrow.c processor.adf
+	tcecc -v -O3 -o farrow.tpef -a processor.adf farrow.c --unroll-threshold=10000 --inline-threshold=10000
 
-simu: fir.tpef processor.adf
-	proxim processor.adf fir.tpef
+simu: farrow.tpef processor.adf
+	proxim processor.adf farrow.tpef
 
-cycles: fir.tpef processor.adf
-	ttasim -a processor.adf -p fir.tpef -e"run; puts [info proc cycles]; quit"
+cycles: farrow.tpef processor.adf
+	ttasim -a processor.adf -p farrow.tpef -e"run; puts [info proc cycles]; quit"
 
-OUTPUT.out: fir.tpef processor.adf
-	ttasim -a processor.adf -p fir.tpef -e"run; puts [info proc cycles]; quit"
+OUTPUT.out: farrow.tpef processor.adf
+	ttasim -a processor.adf -p farrow.tpef -e"run; puts [info proc cycles]; quit"
 
-stats: fir.tpef processor.adf
+stats: farrow.tpef processor.adf
 	./run_script.sh stats
 
-asm: fir.tpef program.adf
-	tcedisasm -n -o program.tceasm processor.adf fir.tpef
+asm: farrow.tpef program.adf
+	tcedisasm -n -o program.tceasm processor.adf farrow.tpef
 
 diff: OUTPUT.out
 	diff -w OUTPUT.out reference.out
