@@ -7,11 +7,14 @@
 #define K3 37
 
 void __attribute__((noinline)) fir_filter_loop(int *restrict x) {
-    int data, status, done = 0;
+    int data, data2, status, done = 0;
 
-    _TCE_FIFO_S16_STREAM_IN(0, data, status);
     do {
+        _TCE_FIFO_S16_STREAM_IN(0, data, status);
+        _TCE_FIFO_S16_STREAM_IN(0, data2, status);
+        done = (status == 0);
         int result;
+        int result2;
         int res1;
         int res2;
         int res3;
@@ -19,19 +22,24 @@ void __attribute__((noinline)) fir_filter_loop(int *restrict x) {
         x[2] = x[1];
         x[1] = x[0];
         x[0] = data - 128; 
-
         _TCE_DILANMAC(K0, x[0], 0, res1);
         _TCE_DILANMAC(K1, x[1], res1, res2);
         _TCE_DILANMAC(K2, x[2], res2, res3);
         _TCE_DILANMAC(K3, x[3], res3, result);
-
         result = result >> SCALE;
 
+        x[3] = x[2];
+        x[2] = x[1];
+        x[1] = x[0];
+        x[0] = data2 - 128; 
+        _TCE_DILANMAC(K0, x[0], 0, res1);
+        _TCE_DILANMAC(K1, x[1], res1, res2);
+        _TCE_DILANMAC(K2, x[2], res2, res3);
+        _TCE_DILANMAC(K3, x[3], res3, result2);
+        result2 = result2 >> SCALE;
+
         _TCE_FIFO_S16_STREAM_OUT(result + 128);  
-
-        done = (status == 0);
-        _TCE_FIFO_S16_STREAM_IN(0, data, status);
-
+        _TCE_FIFO_S16_STREAM_OUT(result2 + 128);  
     } while (!done);
 }
 
