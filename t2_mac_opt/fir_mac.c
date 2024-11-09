@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdint.h>
 
 #define SCALE 8
 #define K0 37
@@ -7,16 +6,15 @@
 #define K2 109
 #define K3 37
 
-void __attribute__((noinline)) fir_filter_loop(int8_t *restrict x) {
-    int status, done = 0;
-    uint8_t data;
-    _TCE_FIFO_U8_STREAM_IN(0, data, status);
+void __attribute__((noinline)) fir_filter_loop(int *restrict x) {
+    int data, status, done = 0;
+
+    _TCE_FIFO_S16_STREAM_IN(0, data, status);
     do {
-        int8_t result;
-        int16_t res1;
-        int16_t res2;
-        int16_t res3;
-        int16_t temp_result;
+        int result;
+        int res1;
+        int res2;
+        int res3;
         x[3] = x[2];
         x[2] = x[1];
         x[1] = x[0];
@@ -25,31 +23,29 @@ void __attribute__((noinline)) fir_filter_loop(int8_t *restrict x) {
         _TCE_DILANMAC(K0, x[0], 0, res1);
         _TCE_DILANMAC(K1, x[1], res1, res2);
         _TCE_DILANMAC(K2, x[2], res2, res3);
-        _TCE_DILANMAC(K3, x[3], res3, temp_result);
+        _TCE_DILANMAC(K3, x[3], res3, result);
 
-        result = temp_result >> SCALE;
+        result = result >> SCALE;
 
-        _TCE_FIFO_U8_STREAM_OUT(result + 128);  
+        _TCE_FIFO_S16_STREAM_OUT(result + 128);  
 
         done = (status == 0);
-        _TCE_FIFO_U8_STREAM_IN(0, data, status);
-        //printf("Line 1\n");
+        _TCE_FIFO_S16_STREAM_IN(0, data, status);
 
     } while (!done);
 }
 
 void sample_copy(int count) {
-    int i, status = 0;
-    uint8_t temp;
+    int i, temp, status;
     for (i = 0; i < count; i++) {
-        _TCE_FIFO_U8_STREAM_IN(0, temp, status);
-        _TCE_FIFO_U8_STREAM_OUT(temp);
+        _TCE_FIFO_S16_STREAM_IN(0, temp, status);
+        _TCE_FIFO_S16_STREAM_OUT(temp);
     }
 }
 
 int main(int argc, char *argv[]) {
     sample_copy(44);
-    int8_t x[4] = {0, 0, 0, 0};
+    int x[4] = {0, 0, 0, 0};
     fir_filter_loop(x);
     return 0;
 }
