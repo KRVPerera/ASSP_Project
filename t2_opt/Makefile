@@ -33,11 +33,20 @@ out34: OUTPUT.out
 outn: OUTPUT.out
 	typeout output.out
 
+processor.bem: processor.adf
+	createbem processor.adf
+
+hdl_files: processor.bem processor.adf 
+	generateprocessor -b processor.bem -e toplevel -l 'vhdl' -i processor.idf -o hdl_files processor.adf
+
 clean:
 	rm -f *.tpef
 	rm -f *.tceasm
 	rm -f *.dot
 	rm -f *.tpef.*
 	rm -f output.out
+	rm -f OUTPUT.out
+	rm -f processor.bem
+	rm -rf hdl_files
 
 .PHONY: clean dis cycles stats diff outn out34 run stats
