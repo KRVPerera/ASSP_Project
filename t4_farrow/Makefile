@@ -7,7 +7,7 @@ design:
 	prode processor.adf
 
 farrow.tpef: farrow.c processor.adf
-	tcecc -v -O3 -o farrow.tpef -a processor.adf farrow.c --unroll-threshold=10000 --inline-threshold=10000
+	tcecc -v -Wall -O3 -o farrow.tpef -a processor.adf farrow.c --unroll-threshold=10000 --inline-threshold=10000
 
 simu: farrow.tpef processor.adf
 	proxim processor.adf farrow.tpef
