@@ -66,19 +66,19 @@ done
 [[ -e procdb.dsdb ]] && print_warning "processor.adf"
 [[ -e explore ]] && print_warning "explore"
 
-cp ../t2/processor.adf .
+cp ../t2_opt/processor.adf .
 explore procdb.dsdb
 explore -a processor.adf procdb.dsdb
 
 mkdir explore
 pushd explore
 
-tcecc -O3 --unroll-threshold=10000 --inline-threshold=10000 -o program.bc --emit-llvm ../../t2/fir.c
+tcecc -O3 --unroll-threshold=10000 --inline-threshold=10000 -o program.bc --emit-llvm ../t2_opt/fir.c
 
 touch correct_simulation_output
 explore -d . ../procdb.dsdb
 
-cp ../../t2/input.in .
+cp ../../t2_opt/input.in .
 
 # step 8 - start the interconnect opt
 CONF_ID=$(explore -v -e ConnectionSweeper -u cc_worsening_threshold=2 -s 1 ../procdb.dsdb)
