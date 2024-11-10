@@ -54,3 +54,4 @@ dkms.conf
 *.tpef
 *.swp
 *.bem
+hdl_files
