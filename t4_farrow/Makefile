@@ -39,5 +39,6 @@ clean:
 	rm -f *.dot
 	rm -f *.tpef.*
 	rm -f output.out
+	rm -f OUTPUT.out
 
 .PHONY: clean dis cycles stats diff outn out34 run stats
