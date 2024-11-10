@@ -1,6 +1,9 @@
 all: clean optimize
 
 design:
+	prode t2_opt.adf
+
+design2:
 	prode sim_9cycles_6.adf
 
 optimize:
