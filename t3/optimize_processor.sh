@@ -73,12 +73,12 @@ explore -a processor.adf procdb.dsdb
 mkdir explore
 pushd explore
 
-tcecc -O3 --unroll-threshold=10000 --inline-threshold=10000 -o program.bc --emit-llvm ../t2_opt/fir.c
+tcecc -O3 --unroll-threshold=10000 --inline-threshold=10000 -o program.bc --emit-llvm ../../t2_opt/fir.c
 
 touch correct_simulation_output
 explore -d . ../procdb.dsdb
 
-cp ../../t2_opt/input.in .
+cp ../../t2_opt/input.in INPUT.in
 
 # step 8 - start the interconnect opt
 CONF_ID=$(explore -v -e ConnectionSweeper -u cc_worsening_threshold=2 -s 1 ../procdb.dsdb)
