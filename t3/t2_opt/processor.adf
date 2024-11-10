@@ -2917,44 +2917,6 @@
     </writes-to>
   </socket>
 
-  <socket name="BOOL_1_o1">
-    <writes-to>
-      <bus>B1_3_4_1_1</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B1_3_4_1_2</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B1_3_4_1_3</bus>
-      <segment>seg1</segment>
-    </writes-to>
-    <writes-to>
-      <bus>B1_3_4_1_4</bus>
-      <segment>seg1</segment>
-    </writes-to>
-  </socket>
-
-  <socket name="BOOL_1_i1">
-    <reads-from>
-      <bus>B1_3_4_1_1</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
-      <bus>B1_3_4_1_2</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
-      <bus>B1_3_4_1_3</bus>
-      <segment>seg1</segment>
-    </reads-from>
-    <reads-from>
-      <bus>B1_3_4_1_4</bus>
-      <segment>seg1</segment>
-    </reads-from>
-  </socket>
-
   <socket name="RF_1_2_1_o1">
     <writes-to>
       <bus>B1_3_4_1_1</bus>
@@ -4260,7 +4222,7 @@
 
   <register-file name="RF_0">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -4288,7 +4250,7 @@
 
   <register-file name="RF_1">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -4302,7 +4264,7 @@
 
   <register-file name="RF_2">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -4314,9 +4276,9 @@
     </port>
   </register-file>
 
-  <register-file name="RF_1_1">
+  <register-file name="RF_3">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -4328,9 +4290,9 @@
     </port>
   </register-file>
 
-  <register-file name="RF_1_2">
+  <register-file name="RF_4">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -4342,23 +4304,9 @@
     </port>
   </register-file>
 
-  <register-file name="BOOL_1">
+  <register-file name="RF_5">
     <type>normal</type>
     <size>4</size>
-    <width>1</width>
-    <max-reads>1</max-reads>
-    <max-writes>1</max-writes>
-    <port name="wr">
-      <connects-to>BOOL_1_o1</connects-to>
-    </port>
-    <port name="rd">
-      <connects-to>BOOL_1_i1</connects-to>
-    </port>
-  </register-file>
-
-  <register-file name="RF_1_2_1">
-    <type>normal</type>
-    <size>8</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -4370,9 +4318,9 @@
     </port>
   </register-file>
 
-  <register-file name="RF_1_2_2">
+  <register-file name="RF_6">
     <type>normal</type>
-    <size>8</size>
+    <size>4</size>
     <width>32</width>
     <max-reads>1</max-reads>
     <max-writes>1</max-writes>
@@ -4387,13 +4335,13 @@
   <address-space name="data">
     <width>8</width>
     <min-address>0</min-address>
-    <max-address>16777215</max-address>
+    <max-address>15</max-address>
   </address-space>
 
   <address-space name="instructions">
     <width>8</width>
     <min-address>0</min-address>
-    <max-address>1048576</max-address>
+    <max-address>127</max-address>
   </address-space>
 
   <global-control-unit name="gcu">
