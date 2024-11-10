@@ -15,13 +15,12 @@ void __attribute__((noinline)) filter_loop(int *restrict x) {
         x[1] = x[0];
         x[0] = signal1;
         int8_t delay = d_sig;
-        int8_t diff = 16 - delay;
+        int8_t diff = 16 - d_sig;
         int mul1 = x[0] * diff;
         int mul2 = x[1] * delay;
         int result = (mul1 + mul2) >> 4;
-        uint8_t uresult = (uint8_t)result;
 
-        _TCE_FIFO_U8_STREAM_OUT(uresult);
+        _TCE_FIFO_U8_STREAM_OUT(result);
     } while (!done);
 }
 
