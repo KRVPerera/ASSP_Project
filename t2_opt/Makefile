@@ -48,5 +48,7 @@ clean:
 	rm -f OUTPUT.out
 	rm -f processor.bem
 	rm -rf hdl_files
+	rm -r fir.mif
+	rm -r fir_data.mif
 
 .PHONY: clean dis cycles stats diff outn out34 run stats
