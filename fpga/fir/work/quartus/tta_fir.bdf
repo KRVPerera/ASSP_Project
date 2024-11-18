@@ -1,0 +1,267 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "graphic" (version "1.4"))
+(pin
+	(input)
+	(rect 384 72 552 88)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "clk" (rect 5 0 19 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+)
+(pin
+	(input)
+	(rect 384 88 552 104)
+	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
+	(text "reset_n" (rect 5 0 41 12)(font "Arial" ))
+	(pt 168 8)
+	(drawing
+		(line (pt 84 12)(pt 109 12))
+		(line (pt 84 4)(pt 109 4))
+		(line (pt 113 8)(pt 168 8))
+		(line (pt 84 12)(pt 84 4))
+		(line (pt 109 4)(pt 113 8))
+		(line (pt 109 12)(pt 113 8))
+	)
+	(text "VCC" (rect 128 7 148 17)(font "Arial" (font_size 6)))
+)
+(pin
+	(output)
+	(rect 1072 160 1248 176)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "led[3..0]" (rect 90 0 130 12)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(symbol
+	(rect 584 48 944 256)
+	(text "toplevel" (rect 5 0 43 12)(font "Arial" ))
+	(text "inst" (rect 8 192 25 204)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "rstx" (rect 0 0 18 12)(font "Arial" ))
+		(text "rstx" (rect 21 43 39 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "busy" (rect 0 0 24 12)(font "Arial" ))
+		(text "busy" (rect 21 59 45 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "imem_data[558..0]" (rect 0 0 92 12)(font "Arial" ))
+		(text "imem_data[558..0]" (rect 21 75 113 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "pc_init[6..0]" (rect 0 0 57 12)(font "Arial" ))
+		(text "pc_init[6..0]" (rect 21 91 78 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "fu_LSU_dmem_data_in[31..0]" (rect 0 0 147 12)(font "Arial" ))
+		(text "fu_LSU_dmem_data_in[31..0]" (rect 21 107 168 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "fu_INPUT_ext_data[7..0]" (rect 0 0 123 12)(font "Arial" ))
+		(text "fu_INPUT_ext_data[7..0]" (rect 21 123 144 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 3))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "fu_INPUT_ext_status[7..0]" (rect 0 0 133 12)(font "Arial" ))
+		(text "fu_INPUT_ext_status[7..0]" (rect 21 139 154 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 3))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "fu_OUTPUT_ext_status[7..0]" (rect 0 0 143 12)(font "Arial" ))
+		(text "fu_OUTPUT_ext_status[7..0]" (rect 21 155 164 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 3))
+	)
+	(port
+		(pt 360 32)
+		(output)
+		(text "imem_en_x" (rect 0 0 56 12)(font "Arial" ))
+		(text "imem_en_x" (rect 292 27 348 39)(font "Arial" ))
+		(line (pt 360 32)(pt 344 32))
+	)
+	(port
+		(pt 360 48)
+		(output)
+		(text "imem_addr[6..0]" (rect 0 0 80 12)(font "Arial" ))
+		(text "imem_addr[6..0]" (rect 272 43 352 55)(font "Arial" ))
+		(line (pt 360 48)(pt 344 48)(line_width 3))
+	)
+	(port
+		(pt 360 64)
+		(output)
+		(text "fu_LSU_dmem_data_out[31..0]" (rect 0 0 154 12)(font "Arial" ))
+		(text "fu_LSU_dmem_data_out[31..0]" (rect 209 59 363 71)(font "Arial" ))
+		(line (pt 360 64)(pt 344 64)(line_width 3))
+	)
+	(port
+		(pt 360 80)
+		(output)
+		(text "fu_LSU_dmem_addr[1..0]" (rect 0 0 127 12)(font "Arial" ))
+		(text "fu_LSU_dmem_addr[1..0]" (rect 232 75 359 87)(font "Arial" ))
+		(line (pt 360 80)(pt 344 80)(line_width 3))
+	)
+	(port
+		(pt 360 96)
+		(output)
+		(text "fu_LSU_dmem_mem_en_x[0..0]" (rect 0 0 160 12)(font "Arial" ))
+		(text "fu_LSU_dmem_mem_en_x[0..0]" (rect 204 91 364 103)(font "Arial" ))
+		(line (pt 360 96)(pt 344 96)(line_width 3))
+	)
+	(port
+		(pt 360 112)
+		(output)
+		(text "fu_LSU_dmem_wr_en_x[0..0]" (rect 0 0 146 12)(font "Arial" ))
+		(text "fu_LSU_dmem_wr_en_x[0..0]" (rect 216 107 362 119)(font "Arial" ))
+		(line (pt 360 112)(pt 344 112)(line_width 3))
+	)
+	(port
+		(pt 360 128)
+		(output)
+		(text "fu_LSU_dmem_bytemask[3..0]" (rect 0 0 155 12)(font "Arial" ))
+		(text "fu_LSU_dmem_bytemask[3..0]" (rect 208 123 363 135)(font "Arial" ))
+		(line (pt 360 128)(pt 344 128)(line_width 3))
+	)
+	(port
+		(pt 360 144)
+		(output)
+		(text "fu_INPUT_ext_rdack[0..0]" (rect 0 0 129 12)(font "Arial" ))
+		(text "fu_INPUT_ext_rdack[0..0]" (rect 230 139 359 151)(font "Arial" ))
+		(line (pt 360 144)(pt 344 144)(line_width 3))
+	)
+	(port
+		(pt 360 160)
+		(output)
+		(text "fu_OUTPUT_ext_data[7..0]" (rect 0 0 134 12)(font "Arial" ))
+		(text "fu_OUTPUT_ext_data[7..0]" (rect 226 155 360 167)(font "Arial" ))
+		(line (pt 360 160)(pt 344 160)(line_width 3))
+	)
+	(port
+		(pt 360 176)
+		(output)
+		(text "fu_OUTPUT_ext_dv[0..0]" (rect 0 0 126 12)(font "Arial" ))
+		(text "fu_OUTPUT_ext_dv[0..0]" (rect 233 171 359 183)(font "Arial" ))
+		(line (pt 360 176)(pt 344 176)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 344 192))
+	)
+)
+(symbol
+	(rect 160 112 320 192)
+	(text "pc_init" (rect 5 0 36 12)(font "Arial" ))
+	(text "inst1" (rect 8 64 31 76)(font "Arial" ))
+	(port
+		(pt 160 32)
+		(output)
+		(text "zeros[width..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "zeros[width..0]" (rect 80 27 150 39)(font "Arial" ))
+		(line (pt 160 32)(pt 144 32)(line_width 3))
+	)
+	(parameter
+		"width"
+		"7"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 144 64))
+	)
+	(annotation_block (parameter)(rect 128 200 310 228))
+)
+(connector
+	(pt 584 80)
+	(pt 552 80)
+)
+(connector
+	(pt 552 96)
+	(pt 584 96)
+)
+(connector
+	(pt 1008 208)
+	(pt 1008 168)
+	(bus)
+)
+(connector
+	(text "led_bus[3..0]" (rect 1008 152 1071 164)(font "Arial" ))
+	(pt 1072 168)
+	(pt 1008 168)
+	(bus)
+)
+(connector
+	(pt 944 208)
+	(pt 1008 208)
+	(bus)
+)
+(connector
+	(text "led_bus[7..0]" (rect 986 224 1049 236)(font "Arial" ))
+	(pt 1008 208)
+	(pt 1064 208)
+	(bus)
+)
+(connector
+	(pt 320 144)
+	(pt 584 144)
+	(bus)
+)
+(junction (pt 1008 208))
