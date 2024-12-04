@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<adf-implementation>
+
+  <ic-decoder-plugin>
+    <name>DefaultICDecoder</name>
+    <file>/usr/local/share/tce/icdecoder_plugins/base/DefaultICDecoderPlugin.so</file>
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+  </ic-decoder-plugin>
+
+  <fu name="ALU">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>378</fu-id>
+  </fu>
+
+  <fu name="LSU">
+    <hdb-file>/usr/local/share/tce/hdb/stratixII.hdb</hdb-file>
+    <fu-id>2</fu-id>
+  </fu>
+
+  <fu name="ADDSH">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>278</fu-id>
+  </fu>
+
+  <fu name="MUL">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>90</fu-id>
+  </fu>
+
+  <fu name="sxqw">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>96</fu-id>
+  </fu>
+
+  <fu name="shl_shr">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>52</fu-id>
+  </fu>
+
+  <fu name="sxqw_1">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>95</fu-id>
+  </fu>
+
+  <fu name="eq_gt">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>176</fu-id>
+  </fu>
+
+  <fu name="and_ior">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>162</fu-id>
+  </fu>
+
+  <fu name="ADDSH_1">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>279</fu-id>
+  </fu>
+
+  <fu name="and_ior_xor">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <fu-id>189</fu-id>
+  </fu>
+
+  <fu name="OUTPUT">
+    <hdb-file>/usr/local/share/tce/hdb/fifo_stream.hdb</hdb-file>
+    <fu-id>12</fu-id>
+  </fu>
+
+  <fu name="INPUT_2">
+    <hdb-file>/usr/local/share/tce/hdb/fifo_stream.hdb</hdb-file>
+    <fu-id>17</fu-id>
+  </fu>
+
+  <fu name="INPUT_1">
+    <hdb-file>/usr/local/share/tce/hdb/fifo_stream.hdb</hdb-file>
+    <fu-id>17</fu-id>
+  </fu>
+
+  <rf name="RF_0">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>189</rf-id>
+  </rf>
+
+  <rf name="RF_1">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>189</rf-id>
+  </rf>
+
+  <rf name="BOOL">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>111</rf-id>
+  </rf>
+
+  <rf name="RF_2">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>189</rf-id>
+  </rf>
+
+  <rf name="RF_1_2">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>1054</rf-id>
+  </rf>
+
+  <rf name="RF_1_1">
+    <hdb-file>/usr/local/share/tce/hdb/asic_130nm_1.5V.hdb</hdb-file>
+    <rf-id>96</rf-id>
+  </rf>
+
+</adf-implementation>
