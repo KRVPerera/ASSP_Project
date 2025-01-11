@@ -112,6 +112,8 @@ int main(int argc, char **argv)
     {
         Fix_Or_Float16 = false;
         printf("Using float16\n");
+    } else {
+        printf("Using float16\n");
     }
 
     Result = (float *)malloc(rows_of_A * columns_of_B * sizeof(float));
@@ -119,7 +121,7 @@ int main(int argc, char **argv)
 
     int result = Matrxi_Mul((float *)A, (float *)B, Result, rows_of_A, columns_of_A, rows_of_B, columns_of_B, Fix_Or_Float16);
 
-    //printf("Result is:\n");
+    printf("Result is:\n");
     printMatrix(Result, rows_of_A, columns_of_B);
 
     if (result != 1)
