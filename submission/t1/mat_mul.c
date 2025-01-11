@@ -13,7 +13,8 @@ HALF floatToHALF(float i);
 HALF static floatToHalfI(uint32_t i);
 uint32_t static halfToFloatI(HALF y);
 
-#define SCALE 1024
+#define SCALE_SHIFT 10
+#define SCALE 1 << SCALE_SHIFT // 1024
 
 float matmul_helper_half(float *A, float *B, int i, int j, int k, int columns_of_A, int columns_of_B)
 {
@@ -35,23 +36,23 @@ float matmul_helper_fixed(float *A, float *B, int i, int j, int k, int columns_o
     for (int l = 0; l < k; l++)
     {
         float a_val = A[i * columns_of_A + l];
-        int A_int = a_val * SCALE;
-        printf("a_val: %f\n", a_val);
-        printf("A_int: %d\n", A_int);
+        int A_int = ((int)a_val) << SCALE_SHIFT;
+        //printf("a_val: %f\n", a_val);
+        //printf("A_int: %d\n", A_int);
 
         float b_val = B[l * columns_of_B + j];
-        int B_int = b_val * SCALE;
-        printf("B_int: %d\n", B_int);
+        int B_int = ((int)b_val) << SCALE_SHIFT;
+        //printf("B_int: %d\n", B_int);
 
         int multi = A_int * B_int;
-        printf("A_int * B_int: %d\n", multi);
-        fixed_point_sum += multi / SCALE;
+        //printf("A_int * B_int: %d\n", multi);
+        fixed_point_sum += multi >> SCALE_SHIFT;
 
-        printf("fixed_point_sum: %d\n", fixed_point_sum);
+        //printf("fixed_point_sum: %d\n", fixed_point_sum);
     }
-    printf("fixed_point_sum ALL: %d\n", fixed_point_sum);
-    printf("\n");
-    return fixed_point_sum / SCALE;
+    //printf("fixed_point_sum ALL: %d\n", fixed_point_sum);
+    //printf("\n");
+    return fixed_point_sum >> SCALE_SHIFT;
 }
 
 // set Fix_Or_Float16 to true to get fixed point calculation. if it's false it will return floating point calculation
@@ -118,7 +119,7 @@ int main(int argc, char **argv)
 
     int result = Matrxi_Mul((float *)A, (float *)B, Result, rows_of_A, columns_of_A, rows_of_B, columns_of_B, Fix_Or_Float16);
 
-    printf("Result is:\n");
+    //printf("Result is:\n");
     printMatrix(Result, rows_of_A, columns_of_B);
 
     if (result != 1)
